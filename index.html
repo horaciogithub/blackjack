@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BlackJack</title>
+	<meta charset="utf-8">
+
+	<!-- ================ -->
+	<!--      STYLES      -->
+	<!-- ================ -->
+	
+	<!--   Css   -->
+	<link rel="stylesheet" href="css/styles.css">
+	
+	<!--   Fonts   -->
+	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+
+	<!-- ==================== -->
+	<!--      JAVASCRIPT      -->
+	<!-- ==================== -->
+	<script src="js/game.js"></script>
+
+</head>
+<body>
+	<header id="banner" role="banner">
+		<div class="overlay"></div>
+		<div class="logo">
+			<img src="images/cards-banner.png" alt="">
+		</div>
+	</header>
+	<div class="header-text">
+		<h1>Welcome to BlackJack</h1>
+	</div>
+
+	<!-- ============== -->
+	<!--      GAME      -->
+	<!-- ============== -->
+	
+	<section id="desk">
+		<div class="overlay-desk"></div>
+
+		<table>
+			<tr>
+				<td colspan="2">
+					<h2>Saldo: <span id="total">$2000</span></h2>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="coin">
+						<img src="images/1.png" alt="">	
+					</div>
+				</td>
+				<td>
+					<h2>$1</h2>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="coin">
+						<img src="images/10.png" alt="">	
+					</div>
+				</td>
+				<td>
+					<h2>$10</h2>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="coin">
+						<img src="images/100.png" alt="">	
+					</div>
+				</td>
+				<td>
+					<h2>$100</h2>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="coin">
+						<img src="images/500.png" alt="">	
+					</div>
+				</td>
+				<td>
+					<h2>$500</h2>
+				</td>
+			</tr>
+		</table>
+
+		<!-- Botones para apostar/pasar -->
+		<button id="bet">Apostar</button>
+		<button id="stand">Parar</button>
+	</section>
+</body>
+</html>

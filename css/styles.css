@@ -1,0 +1,86 @@
+
+body{
+	margin: 0;
+}
+
+table{
+	margin-left: 10px;
+}
+
+/* =============== */
+/*     	BANNER     */
+/* =============== */
+
+#banner {
+	background: url("../images/banner.jpg") no-repeat center;
+	background-size: cover;
+	position: relative;
+	height: 300px;
+}
+
+#banner .overlay{
+	background-color: rgba(0,0,0,.25);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+#banner .logo img{
+	position: relative;
+	width: 30%;
+	height: 280px;
+	z-index: 99;
+	margin-top: 120px;
+}
+
+.header-text{
+	font-family: 'Cinzel', serif;
+	font-size: 25px;
+	color: green;
+	z-index: 99;
+	text-align: right;
+	margin-right: 55px;
+}
+
+/* ============= */
+/*     	GAME     */
+/* ============= */
+
+
+#desk{
+	background: url("../images/desk.jpg") no-repeat center;
+	background-size: cover;
+	position: relative;
+	height: 600px;
+}
+
+#desk .overlay-desk{
+	background-color: rgba(0,0,0,.25);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+#desk h2{
+	font-size: 35px;
+	color: white;
+	position: relative;
+	z-index: 99;
+}
+
+#desk table .coin{
+	background-color: white;
+	position: relative;
+	z-index: 99;
+	width: 70%;
+	border-radius: 100%;
+	margin-right: -150px;
+}
+
+#desk table .coin img{
+	width: 100%;
+}
