@@ -7,6 +7,20 @@ table{
 	margin-left: 10px;
 }
 
+a{
+	cursor: pointer;
+}
+
+button{
+	position: relative;
+	z-index: 99;
+}
+
+img{
+	position: relative;
+	z-index: 99;
+}
+
 /* =============== */
 /*     	BANNER     */
 /* =============== */
@@ -54,6 +68,10 @@ table{
 	background-size: cover;
 	position: relative;
 	height: 600px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding:30px;
 }
 
 #desk .overlay-desk{
@@ -65,8 +83,30 @@ table{
 	left: 0;
 }
 
+#desk .menu{
+	width: 30%;
+}
+
+#desk .game-table{
+	width: 50%;
+}
+
+#desk .game-table div:first-child{
+	display: none;
+	background-color: red;
+	width: 10%;
+	padding: 1px 20px 1px 20px;
+	border-radius: 100%;
+}
+
+#desk .game-table div:first-child h2{
+	font-family: arial;
+	font-size: 30px;
+	text-align: center;
+}
+
 #desk h2{
-	font-size: 35px;
+	font-size: 25px;
 	color: white;
 	position: relative;
 	z-index: 99;
@@ -78,9 +118,69 @@ table{
 	z-index: 99;
 	width: 70%;
 	border-radius: 100%;
-	margin-right: -150px;
+	margin-right: -200px;
 }
 
 #desk table .coin img{
 	width: 100%;
+}
+
+/* Boton de trato */
+
+.deal,.hit,.stand{
+	display: none;
+	margin: 10px;
+	padding: 30px 20px 30px 20px;
+	background-color: rgb(80,80,80);
+	border:none;
+	font-family: arial;
+	font-size: 15px;
+	color: white;
+	border-radius: 100%;
+	z-index: 99;
+	box-shadow: 5px 5px black;
+	outline: none;
+	cursor: pointer;
+}
+
+.deal:hover,.hit:hover,.stand:hover{
+	background-color: rgb(100,100,100);
+	border:none;
+}
+
+
+/*Cards*/
+
+.cards{
+	padding: 40px;
+	height: 200px;
+}
+
+.cards img{
+	width: 28%
+}
+
+.cards img:first-child{
+	transform: rotate(-20deg);
+}
+
+.cards img:nth-child(2){
+	transform: rotate(-8deg);
+	margin-left: -50px;
+}
+
+.cards img:nth-child(3){
+	transform: rotate(5deg);
+	margin-left: -50px;
+}
+
+.cards img:last-child{
+	transform: rotate(8deg);
+	margin-left: -50px;
+}
+
+/* botones*/
+
+#desk .buttons{
+	width: 10%;
 }

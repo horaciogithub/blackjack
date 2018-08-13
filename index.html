@@ -3,6 +3,7 @@
 <head>
 	<title>BlackJack</title>
 	<meta charset="utf-8">
+	<meta author="Horacio Ramírez">
 
 	<!-- ================ -->
 	<!--      STYLES      -->
@@ -17,6 +18,10 @@
 	<!-- ==================== -->
 	<!--      JAVASCRIPT      -->
 	<!-- ==================== -->
+
+	<!-- Jquery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="js/main.js"></script>
 	<script src="js/game.js"></script>
 
 </head>
@@ -37,58 +42,88 @@
 	
 	<section id="desk">
 		<div class="overlay-desk"></div>
+	
+		<div class="menu">
+			<h2>Saldo: $<span id="total"></span></h2>
+			<h2>Apuesta: $<span id="amountBet"></span></h2>
+			<table>
+				<tr>
+					<td>
+						<div class="coin">
+							<a id="coin1">
+								<img src="images/1.png" alt="">	
+							</a>
+						</div>
+					</td>
+					<td>
+						<h2>$1</h2>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="coin">
+							<a id="coin10">
+									<img src="images/10.png" alt="">	
+							</a>	
+						</div>
+					</td>
+					<td>
+						<h2>$10</h2>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="coin">
+							<a id="coin100">
+								<img src="images/100.png" alt="">	
+							</a>
+						</div>
+					</td>
+					<td>
+						<h2>$100</h2>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="coin">
+							<a id="coin500">
+								<img src="images/500.png" alt="">	
+							</a>	
+						</div>
+					</td>
+					<td>
+						<h2>$500</h2>
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="game-table">
+			<div>
+				<h2 id="valor"></h2>
+			</div>
+			
+			<div class="cards">
+				<img class="playerCard1"  alt="">
+				<img class="playerCard2"  alt="">
+				<img class="playerCard3"  alt="">
+				<img class="playerCard4" alt="">
+			</div>
 
-		<table>
-			<tr>
-				<td colspan="2">
-					<h2>Saldo: <span id="total">$2000</span></h2>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="coin">
-						<img src="images/1.png" alt="">	
-					</div>
-				</td>
-				<td>
-					<h2>$1</h2>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="coin">
-						<img src="images/10.png" alt="">	
-					</div>
-				</td>
-				<td>
-					<h2>$10</h2>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="coin">
-						<img src="images/100.png" alt="">	
-					</div>
-				</td>
-				<td>
-					<h2>$100</h2>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="coin">
-						<img src="images/500.png" alt="">	
-					</div>
-				</td>
-				<td>
-					<h2>$500</h2>
-				</td>
-			</tr>
-		</table>
+			<div class="cards">
+				<img class="croupCard1"  alt="">
+				<img class="croupCard2"  alt="">
+				<img class="croupCard3"  alt="">
+				<img class="croupCard4" alt="">
+			</div>
+		</div>
 
 		<!-- Botones para apostar/pasar -->
-		<button id="bet">Apostar</button>
-		<button id="stand">Parar</button>
+		<div class="buttons">
+			<button id="bet" class="deal">Trato</button>
+			<button id="hit" class="hit">Pedir</button>
+			<button id="stand" class="stand">Mostrar</button>
+		</div>
 	</section>
 </body>
 </html>
