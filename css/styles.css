@@ -108,7 +108,7 @@ section#desk {
 }
 
 section#desk .overlay-desk {
-	background-color: rgba(0,0,0,.25);
+	background-color: rgba(0,0,0,.55);
 	position: absolute;
 	top: 0;
 	right: 0;

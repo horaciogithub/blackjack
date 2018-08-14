@@ -127,7 +127,8 @@ $(document).ready(function(){
 			// Muestra botón de trato
 			$('.deal').fadeIn(1000);
 		}else{
-			alert("No tienes suficientes fondos");
+			$('#cel1').css('display','none');
+
 		}
 	});
 
@@ -145,7 +146,8 @@ $(document).ready(function(){
 			// Muestra botón de trato
 			$('.deal').fadeIn(1000);
 		}else{
-			alert("No tienes suficientes fondos");
+			$('#cel10').css('display','none');
+
 		}
 	});
 
@@ -163,13 +165,14 @@ $(document).ready(function(){
 			// Muestra botón de trato
 			$('.deal').fadeIn(1000);
 		}else{
-			alert("No tienes suficientes fondos");
+			$('#cel100').css('display','none');
+
 		}
 	});
 
 	// Resta 500 al saldo y se lo suma a la apuesta
 	$('#coin500').on('click', function(){
-		if (player.coins > 0 && (player.coins-500) > 0 && !(player.bet== true)) {
+		if (player.coins > 0 && (player.coins-500) >= 0 && !(player.bet== true)) {
 			player.betCoin500();
 			
 			// Actualiza el saldo
@@ -181,7 +184,7 @@ $(document).ready(function(){
 			// Muestra botón de trato
 			$('.deal').fadeIn(1000);
 		}else{
-			alert("No tienes suficientes fondos");
+			$('#cel500').css('display','none');
 		}
 	});
 
