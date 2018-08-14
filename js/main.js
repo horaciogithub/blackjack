@@ -1,19 +1,47 @@
-// CREAR Y ASIGNAR CARTAS
+/* ▬▬▬▬▬▬▬▬▬▬▬ */
+/*   OBJETOS   */
+/* ▬▬▬▬▬▬▬▬▬▬▬ */
 
+// Jugador
+var player = {
+	name: 'player',
+	coins : 2000,
+	amountBet : 0,
+	bet: false,
+	hand: [],
+	points: 0,
+
+	betCoin: function (coins){
+		this.coins = this.coins-coins;
+		this.amountBet= this.amountBet+coins;
+	},
+}
+
+// Oponente
+var croupier = {
+	name: 'oponent',
+	hand: [],
+	points: 0,
+}
+
+/* ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ */
+/*   GENERAL FUNCTIONS   */
+/* ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ */
+
+// Crea las barajas y las reparte
 function setCards(){
 	var palo = ['Picas','Corazones','Treboles','Diamantes'];
-	var baraja = [];
-	var mano = [];
+	var barajas = [];
 
 	//  Creamos las barajas
 	for(var i = 0; i < palo.length; i++){
 		for(var j = 1; j <= 12; j++){
-			baraja[baraja.length] = {palo:palo[i],valor:j};
+			barajas[barajas.length] = {palo:palo[i],valor:j};
 		}
 	}
 
 	/*asigna primera carta al azar*/
-	baraja = baraja[parseInt(Math.random()*48)];
+	var baraja = barajas[parseInt(Math.random()*48)];
 
 	return baraja;
 }
@@ -48,7 +76,6 @@ function total(player,total){
 }
 
 // Pedir carta nueva
-
 function cartaNueva(player,clase,count){
 	// Ultima posición del array
 	pos = player.hand.length;
@@ -69,43 +96,38 @@ function cartaNueva(player,clase,count){
 	}
 }
 
+// Aumentar apuesta
+function apostar(coins){
+	if (player.coins > 0 && (player.coins-coins) >= 0 && !(player.bet== true)) {
+		player.betCoin(coins);
+
+		// Actualiza el saldo
+		$('#total').html(player.coins);
+			
+		// Actualiza la apuesta
+		$('#amountBet').html(player.amountBet);
+
+		// Muestra botón de trato
+		$('.deal').fadeIn(1000);
+	}else{
+		switch (coins){
+			case 1:
+				$('#cel1').css('display','none');
+			break;
+			case 10:
+				$('#cel10').css('display','none');
+			break;
+			case 100:
+				$('#cel100').css('display','none');
+			break;
+			case 500:
+				$('#cel500').css('display','none');
+			break;
+		};
+	}
+}
+
 $(document).ready(function(){
-	// Objeto Jugador
-	var player = {
-		name: 'player',
-		coins : 2000,
-		amountBet : 0,
-		bet: false,
-		hand: [],
-		points: 0,
-
-		betCoin1: function (){
-			this.coins--;
-			this.amountBet++;
-		},
-
-		betCoin10: function (){
-			this.coins-=10;
-			this.amountBet+=10;
-		},
-
-		betCoin100: function (){
-			this.coins-=100;
-			this.amountBet+=100;
-		},
-
-		betCoin500: function (){
-			this.coins-=500;
-			this.amountBet+=500;
-		}
-	}
-
-	// Oponente
-	var croupier = {
-		name: 'oponent',
-		hand: [],
-		points: 0,
-	}
 
 	// Imprime saldo inicial
 	$('#total').html(player.coins);
@@ -113,82 +135,27 @@ $(document).ready(function(){
 	// Imprime apuesta inicial
 	$('#amountBet').html(player.amountBet);
 
-	// Resta 1 al saldo y se lo suma a la apuesta
+	// Apuesta 1 dollar
 	$('#coin1').on('click', function(){
-		if (player.coins > 0 && (player.coins-1) >= 0 && !(player.bet== true)) {
-			player.betCoin1();
-
-			// Actualiza el saldo
-			$('#total').html(player.coins);
-			
-			// Actualiza la apuesta
-			$('#amountBet').html(player.amountBet);
-
-			// Muestra botón de trato
-			$('.deal').fadeIn(1000);
-		}else{
-			$('#cel1').css('display','none');
-
-		}
+		apostar(1);
 	});
 
-	// Resta 10 al saldo y se lo suma a la apuesta
+	// Apuesta 10 dollares
 	$('#coin10').on('click', function(){
-		if (player.coins > 0 && (player.coins-10) > 0 && !(player.bet== true)) {
-			player.betCoin10();	
-			
-			// Actualiza el saldo
-			$('#total').html(player.coins);
-			
-			// Actualiza la apuesta
-			$('#amountBet').html(player.amountBet);
-
-			// Muestra botón de trato
-			$('.deal').fadeIn(1000);
-		}else{
-			$('#cel10').css('display','none');
-
-		}
+		apostar(10);
 	});
 
-	// Resta 100 al saldo y se lo suma a la apuesta
+	// Apuesta 100 dollares
 	$('#coin100').on('click', function(){
-		if (player.coins > 0 && (player.coins-100) > 0 && !(player.bet== true)) {
-			player.betCoin100();
-			
-			// Actualiza el saldo
-			$('#total').html(player.coins);	
-			
-			// Actualiza la apuesta
-			$('#amountBet').html(player.amountBet);
-
-			// Muestra botón de trato
-			$('.deal').fadeIn(1000);
-		}else{
-			$('#cel100').css('display','none');
-
-		}
+		apostar(100);
 	});
 
-	// Resta 500 al saldo y se lo suma a la apuesta
+	// Apuesta 500 dollares
 	$('#coin500').on('click', function(){
-		if (player.coins > 0 && (player.coins-500) >= 0 && !(player.bet== true)) {
-			player.betCoin500();
-			
-			// Actualiza el saldo
-			$('#total').html(player.coins);
-
-			// Actualiza la apuesta
-			$('#amountBet').html(player.amountBet);
-
-			// Muestra botón de trato
-			$('.deal').fadeIn(1000);
-		}else{
-			$('#cel500').css('display','none');
-		}
+		apostar(500);
 	});
 
-	// Apostar
+	// Empieza el juego
 	$('#bet').on('click', function(){
 		player.bet = true;
 
@@ -239,12 +206,42 @@ $(document).ready(function(){
 	$('#stand').on('click', function(){
 		player.bet = false;
 
+		// Gana
 		if (player.points > croupier.points && player.points <= 21) {
-			console.log("Ganas");
+
+			// Mostrar mensaje ganas y cantidad ganada
+			$('#cash').html("$"+player.amountBet);
+			$('#result').css('display','block');
+			
+			$('#result').on('click',function(){
+				$('#result').css('display','none');
+				// Suma al saldo lo ganado
+				player.coins+=player.amountBet;
+
+				// Imprime nuevo saldo
+				$('#total').html(player.coins);
+			});
+
+		// Empate
 		}else if (player.points == croupier.points && player.points <= 21) {
 			console.log("Empate");
+
+		// Pierde
 		}else{
-			console.log("Pierdes");
+
+			// Mostrar mensaje pierdes 
+			$('#resMessa').html("You lose");
+			$('#cash').html("-$"+player.amountBet);
+			$('#result').css('display','block');
+			
+			$('#result').on('click',function(){
+				$('#result').css('display','none');
+				// Resta a la apuesta lo perdido
+				player.amountBet = 0;
+
+				// Resetea apuesta
+				$('#amountBet').html(player.amountBet);
+			});
 		}
 	});
 });

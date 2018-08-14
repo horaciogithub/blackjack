@@ -207,3 +207,29 @@ section#desk .buttons button:hover {
 	background-color: rgb(100,100,100);
 	border:none;
 }
+
+/* ▬▬▬▬▬▬▬▬▬▬▬▬▬▬ */
+/*    RESULTADO   */
+/* ▬▬▬▬▬▬▬▬▬▬▬▬▬▬ */
+
+#result {
+	display: none;
+	background-color: rgba(2,2,2, .70);
+	height: 658px;
+	position: absolute;
+	width: 100%;
+	top: 56%;
+	z-index: 120;
+	cursor: pointer;
+}
+
+#result h3 {
+	color: white;
+	font-size: 80px;
+	text-align: center;
+	margin: 0px;
+}
+
+#result h3:first-child {
+	margin-top: 250px;
+}
