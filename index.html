@@ -1,44 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="ES">
 <head>
 	<title>BlackJack</title>
 	<meta charset="utf-8">
-	<meta author="Horacio Ramírez">
+	<meta name="author" content="Horacio Ramírez Estupiñán">
+	<meta name="description" content="blackjack">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- ================ -->
+	<!-- ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ -->
 	<!--      STYLES      -->
-	<!-- ================ -->
+	<!-- ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ -->
 	
-	<!--   Css   -->
+	<!-- CSS -->
 	<link rel="stylesheet" href="css/styles.css">
 	
-	<!--   Fonts   -->
+	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 
-	<!-- ==================== -->
+	<!-- ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ -->
 	<!--      JAVASCRIPT      -->
-	<!-- ==================== -->
+	<!-- ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ -->
 
 	<!-- Jquery -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/game.js"></script>
-
 </head>
 <body>
-	<header id="banner" role="banner">
+
+	<!-- ▬▬▬▬▬▬▬▬▬▬ -->
+	<!--   BANNER   -->
+	<!-- ▬▬▬▬▬▬▬▬▬▬ -->
+
+	<header id="banner">
 		<div class="overlay"></div>
 		<div class="logo">
-			<img src="images/cards-banner.png" alt="">
+			<img src="images/cards-banner.png" alt="Logo">
 		</div>
 	</header>
+
+	<!-- Header message -->
 	<div class="header-text">
 		<h1>Welcome to BlackJack</h1>
 	</div>
 
-	<!-- ============== -->
-	<!--      GAME      -->
-	<!-- ============== -->
+	<!-- ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ -->
+	<!--   GAME CONTENT  -->
+	<!-- ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ -->
 	
 	<section id="desk">
 		<div class="overlay-desk"></div>
@@ -51,7 +59,7 @@
 					<td>
 						<div class="coin">
 							<a id="coin1">
-								<img src="images/1.png" alt="">	
+								<img src="images/1.png" alt="Moneda de $1">	
 							</a>
 						</div>
 					</td>
@@ -63,7 +71,7 @@
 					<td>
 						<div class="coin">
 							<a id="coin10">
-									<img src="images/10.png" alt="">	
+									<img src="images/10.png" alt="Moneda de $10">	
 							</a>	
 						</div>
 					</td>
@@ -75,7 +83,7 @@
 					<td>
 						<div class="coin">
 							<a id="coin100">
-								<img src="images/100.png" alt="">	
+								<img src="images/100.png" alt="Moneda de $100">	
 							</a>
 						</div>
 					</td>
@@ -87,7 +95,7 @@
 					<td>
 						<div class="coin">
 							<a id="coin500">
-								<img src="images/500.png" alt="">	
+								<img src="images/500.png" alt="Moneda de $500">	
 							</a>	
 						</div>
 					</td>
@@ -97,29 +105,34 @@
 				</tr>
 			</table>
 		</div>
-		
+
 		<div class="game-table">
 			<div>
 				<h2 id="valor"></h2>
 			</div>
-			
+
+			<!-- Cards container -->
 			<div class="cards">
-				<img class="playerCard1"  alt="">
-				<img class="playerCard2"  alt="">
-				<img class="playerCard3"  alt="">
-				<img class="playerCard4" alt="">
+				<!-- Cards images -->
+				<img class="playerCard1">
+				<img class="playerCard2">
+				<img class="playerCard3">
+				<img class="playerCard4">
 			</div>
 
+			<!-- Cards container -->
 			<div class="cards">
-				<img class="croupCard1"  alt="">
-				<img class="croupCard2"  alt="">
-				<img class="croupCard3"  alt="">
-				<img class="croupCard4" alt="">
+				<!-- Cards images -->
+				<img class="croupCard1" >
+				<img class="croupCard2" >
+				<img class="croupCard3" >
+				<img class="croupCard4" >
 			</div>
 		</div>
 
-		<!-- Botones para apostar/pasar -->
+		<!-- Buttons container -->
 		<div class="buttons">
+			<!-- Control buttons -->
 			<button id="bet" class="deal">Trato</button>
 			<button id="hit" class="hit">Pedir</button>
 			<button id="stand" class="stand">Mostrar</button>

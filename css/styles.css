@@ -1,38 +1,48 @@
+/* ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ */
+/*   GENERAL FEATURES   */
+/* ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ */
 
-body{
+body {
 	margin: 0;
 }
 
-table{
+table {
 	margin-left: 10px;
 }
 
-a{
+a {
 	cursor: pointer;
 }
 
-button{
+button {
 	position: relative;
 	z-index: 99;
 }
 
-img{
+img {
 	position: relative;
 	z-index: 99;
 }
 
-/* =============== */
-/*     	BANNER     */
-/* =============== */
+h2 {
+	font-size: 25px;
+	color: white;
+	position: relative;
+	z-index: 99;
+}
 
-#banner {
+/* ▬▬▬▬▬▬▬▬▬▬ */
+/*   BANNER   */
+/* ▬▬▬▬▬▬▬▬▬▬ */
+
+header#banner {
 	background: url("../images/banner.jpg") no-repeat center;
 	background-size: cover;
 	position: relative;
 	height: 300px;
 }
 
-#banner .overlay{
+header#banner .overlay {
 	background-color: rgba(0,0,0,.25);
 	position: absolute;
 	top: 0;
@@ -41,7 +51,7 @@ img{
 	left: 0;
 }
 
-#banner .logo img{
+header#banner .logo img {
 	position: relative;
 	width: 30%;
 	height: 280px;
@@ -49,7 +59,8 @@ img{
 	margin-top: 120px;
 }
 
-.header-text{
+/* Header message */
+div.header-text {
 	font-family: 'Cinzel', serif;
 	font-size: 25px;
 	color: green;
@@ -58,12 +69,11 @@ img{
 	margin-right: 55px;
 }
 
-/* ============= */
-/*     	GAME     */
-/* ============= */
+/* ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ */
+/*   GAME CONTENT   */
+/* ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ */
 
-
-#desk{
+section#desk {
 	background: url("../images/desk.jpg") no-repeat center;
 	background-size: cover;
 	position: relative;
@@ -74,7 +84,7 @@ img{
 	padding:30px;
 }
 
-#desk .overlay-desk{
+section#desk .overlay-desk {
 	background-color: rgba(0,0,0,.25);
 	position: absolute;
 	top: 0;
@@ -83,36 +93,11 @@ img{
 	left: 0;
 }
 
-#desk .menu{
+section#desk .menu {
 	width: 30%;
 }
 
-#desk .game-table{
-	width: 50%;
-}
-
-#desk .game-table div:first-child{
-	display: none;
-	background-color: red;
-	width: 10%;
-	padding: 1px 20px 1px 20px;
-	border-radius: 100%;
-}
-
-#desk .game-table div:first-child h2{
-	font-family: arial;
-	font-size: 30px;
-	text-align: center;
-}
-
-#desk h2{
-	font-size: 25px;
-	color: white;
-	position: relative;
-	z-index: 99;
-}
-
-#desk table .coin{
+section#desk .menu table .coin {
 	background-color: white;
 	position: relative;
 	z-index: 99;
@@ -121,13 +106,65 @@ img{
 	margin-right: -200px;
 }
 
-#desk table .coin img{
+section#desk .menu table .coin img {
 	width: 100%;
 }
 
-/* Boton de trato */
+section#desk .game-table {
+	width: 50%;
+}
 
-.deal,.hit,.stand{
+section#desk .game-table div:first-child {
+	display: none;
+	background-color: red;
+	width: 10%;
+	padding: 1px 20px 1px 20px;
+	border-radius: 100%;
+}
+
+section#desk .game-table div:first-child h2 {
+	font-family: arial;
+	font-size: 30px;
+	text-align: center;
+}
+
+/* Cards container */
+section#desk .game-table .cards {
+	padding: 40px;
+	height: 200px;
+}
+
+/* Cards images */
+section#desk .game-table .cards img {
+	width: 28%
+}
+
+section#desk .game-table .cards img:first-child {
+	transform: rotate(-20deg);
+}
+
+section#desk .game-table .cards img:nth-child(2) {
+	transform: rotate(-8deg);
+	margin-left: -50px;
+}
+
+section#desk .game-table .cards img:nth-child(3) {
+	transform: rotate(5deg);
+	margin-left: -50px;
+}
+
+section#desk .game-table .cards img:last-child {
+	transform: rotate(8deg);
+	margin-left: -50px;
+}
+
+/* Buttons container */
+section#desk .buttons {
+	width: 10%;
+}
+
+/* Control buttons */
+section#desk .buttons button {
 	display: none;
 	margin: 10px;
 	padding: 30px 20px 30px 20px;
@@ -143,44 +180,7 @@ img{
 	cursor: pointer;
 }
 
-.deal:hover,.hit:hover,.stand:hover{
+section#desk .buttons button:hover {
 	background-color: rgb(100,100,100);
 	border:none;
-}
-
-
-/*Cards*/
-
-.cards{
-	padding: 40px;
-	height: 200px;
-}
-
-.cards img{
-	width: 28%
-}
-
-.cards img:first-child{
-	transform: rotate(-20deg);
-}
-
-.cards img:nth-child(2){
-	transform: rotate(-8deg);
-	margin-left: -50px;
-}
-
-.cards img:nth-child(3){
-	transform: rotate(5deg);
-	margin-left: -50px;
-}
-
-.cards img:last-child{
-	transform: rotate(8deg);
-	margin-left: -50px;
-}
-
-/* botones*/
-
-#desk .buttons{
-	width: 10%;
 }

@@ -26,8 +26,11 @@ function mostrarCartas(player, clase) {
 		// Rutas de las cartas
 		var ruta = "images/"+player.hand[i].palo+"/"+player.hand[i].valor+""+player.hand[i].palo+".png";
 		
-		// Muestra las cartas en pantalla
-		 $(clase+(i+1)).attr('src',ruta);
+		// Muestra la imagen de la carta en pantalla
+		$(clase+(i+1)).attr('src',ruta);
+
+		// Muestra el texto alternativo de  imagen
+		$(clase+(i+1)).attr('alt',(clase.substring(1))+(i+1));
 	}
 }
 
@@ -60,13 +63,16 @@ function cartaNueva(player,clase,count){
 	 	player.points += player.hand[pos-1].valor;
 	 	
 	}
-
-	 $('#valor').html(player.points);
+	
+	if (player.name === 'player') {
+		$('#valor').html(player.points);
+	}
 }
 
 $(document).ready(function(){
 	// Objeto Jugador
 	var player = {
+		name: 'player',
 		coins : 2000,
 		amountBet : 0,
 		bet: false,
@@ -96,6 +102,7 @@ $(document).ready(function(){
 
 	// Oponente
 	var croupier = {
+		name: 'oponent',
 		hand: [],
 		points: 0,
 	}
@@ -202,10 +209,15 @@ $(document).ready(function(){
 		croupier.points = total(croupier,croupier.points);
 		console.log(croupier.points);
 
-		// Pedir carta jugador
+		
 		var count=1;
 		$('#hit').on('click',function(){
+			// Pedir carta jugador
 			cartaNueva(player,".playerCard",count);
+
+			// Pedir carta croupier
+			cartaNueva(croupier,".croupCard",count);
+			console.log(croupier.points);
 			count++;
 		});
 		
@@ -231,6 +243,5 @@ $(document).ready(function(){
 		}else{
 			console.log("Pierdes");
 		}
-			
 	});
 });
