@@ -12,8 +12,12 @@ var player = {
 	points: 0,
 
 	betCoin: function (coins){
-		this.coins = this.coins-coins;
-		this.amountBet= this.amountBet+coins;
+		this.coins -= coins;
+		this.amountBet+=coins;
+	},
+
+	resetAmBet: function(){
+		this.amountBet = 0;
 	},
 
 	resetPoints: function(){
@@ -22,6 +26,16 @@ var player = {
 
 	resetHand: function(){
 		this.hand = [];
+	},
+
+	win: function(){
+		this.coins += this.amountBet*2;
+		this.amountBet = 0;
+	},
+
+	lose: function(coins){
+		this.coins -= coins;
+		this.amountBet = 0;
 	},
 }
 
@@ -78,8 +92,9 @@ function mostrarCartas(player, clase) {
 	}
 }
 
-function total(player,total){
-	alert(total+"--");
+function total(player){
+	var total = 0;
+	
 	for (var i = 0; i < player.hand.length; i++) {
 		// Truncamos los valores de las cartas que sean mayores de 10
 		if (player.hand[i].valor > 10) {
@@ -119,6 +134,9 @@ function cartaNueva(player,clase,count){
 function apostar(coins){
 	if (player.coins > 0 && (player.coins-coins) >= 0 && !(player.bet== true)) {
 		player.betCoin(coins);
+		console.log("apu1 " + coins);
+		console.log("amount " + player.amountBet);
+		console.log("******");
 
 		// Actualiza el saldo
 		$('#total').html(player.coins);
@@ -146,35 +164,8 @@ function apostar(coins){
 	}
 }
 
-// Comprueba si hay blackjack
-function isBlackjack(points){
-	if (points == 21) {
-		return true;
-	}
-}
-
-// Juego función principal
-function game(){
-
-	// Vaciamos la mano
-	player.resetHand();
-	
-	// Ocultar botones de juego al reiniciar 
-	$('.hit').fadeOut();
-	$('.stand').fadeOut();
-
-	// Resetea los puntos de las cartas
-	player.resetPoints();
-	console.log("jug " + player.points);
-	croupier.resetPoints();
-	console.log("crup " + croupier.points);
-
-	// Imprime saldo inicial
-	$('#total').html(player.coins);
-
-	// Imprime apuesta inicial
-	$('#amountBet').html(player.amountBet);
-
+// Apuestas
+$(document).ready(function(){
 	// Apuesta 1 dollar
 	$('#coin1').on('click', function(){
 		apostar(1);
@@ -190,10 +181,67 @@ function game(){
 		apostar(100);
 	});
 
+	var c = 0;
 	// Apuesta 500 dollares
 	$('#coin500').on('click', function(){
 		apostar(500);
+		c++;
+		console.log(c+" evento");
 	});
+});
+
+// Comprueba si hay blackjack
+function isBlackjack(points){
+	if (points == 21) {
+		return true;
+	}
+}
+
+// Comprueba que ha ganado
+
+function isWinner(){
+	var gana = false;
+
+	if(player.points <= 21){
+		gana = true;
+
+		if (croupier.points <= 21 && player.points > croupier.points) {
+			gana = true;
+		}else{
+			gana = false;
+		}
+
+	}else{
+		gana = false;
+	}
+	return gana;
+}
+
+// Juego función principal
+function game(){
+
+	// Vaciamos la mano
+	player.resetHand();
+
+	// Reseteamos la cantidad apostada
+	player.resetAmBet();
+	console.log("saldo"+player.coins);
+	console.log("apuesta"+player.amountBet);
+	console.log("-----------");
+	
+	// Ocultar botones de juego al reiniciar 
+	$('.hit').fadeOut();
+	$('.stand').fadeOut();
+
+	// Resetea los puntos de las cartas
+	player.resetPoints();
+	croupier.resetPoints();
+
+	// Imprime saldo inicial
+	$('#total').html(player.coins);
+
+	// Imprime apuesta inicial
+	$('#amountBet').html(player.amountBet);
 
 	// Empieza el juego
 	$('#bet').on('click', function(){
@@ -220,7 +268,7 @@ function game(){
 		
 		// Suma de valores de las cartas iniciales croupier
 		croupier.points = total(croupier,croupier.points);
-		console.log("c1"+croupier.points);
+		console.log("crupier =>"+croupier.points);
 
 		if (isBlackjack(player.points)) {
 
@@ -279,7 +327,7 @@ $(document).ready(function(){
 		player.bet = false;
 
 		// Gana
-		if (player.points > croupier.points && player.points <= 21) {
+		if (isWinner()) {
 
 			// Mostrar mensaje ganas y cantidad ganada
 			$('#cash').html("$"+(player.amountBet*2));
@@ -287,39 +335,39 @@ $(document).ready(function(){
 			
 			$('#result').on('click',function(){
 				$('#result').css('display','none');
-				// Suma al saldo lo ganado
-				player.coins+=(player.amountBet*2);
-
-				// Reinicia el valor de la apuesta
-				player.amountBet = 0;
+				
+				player.win();
 
 				// Imprime nuevo saldo
 				$('#total').html(player.coins);
 
-				// Inicia el juego
+				// Reinicia el juego
 				game();
 			});
 
 		// Empate
 		}else if (player.points == croupier.points && player.points <= 21) {
-			console.log("Empate");
+			// console.log("Empate");
 
 		// Pierde
 		}else{
 
-			// Mostrar mensaje pierdes 
-			$('#resMessa').html("You lose");
-			$('#cash').html("-$"+player.amountBet);
-			$('#result').css('display','block');
+			// // Mostrar mensaje pierdes 
+			// $('#resMessa').html("You lose");
+			// $('#cash').html("-$"+player.amountBet);
+			// $('#result').css('display','block');
 			
-			$('#result').on('click',function(){
-				$('#result').css('display','none');
-				// Resta a la apuesta lo perdido
-				player.amountBet = 0;
+			// $('#result').on('click',function(){
+			// 	$('#result').css('display','none');
+			// 	// Resta a la apuesta lo perdido
+			// 	player.lose();
 
-				// Resetea apuesta
-				$('#amountBet').html(player.amountBet);
-			});
+			// 	// Resetea apuesta
+			// 	// $('#amountBet').html(player.amountBet);
+				
+			// 	// Reinicia el juego
+			// 	game();
+			// });
 		}
 	});
 });
