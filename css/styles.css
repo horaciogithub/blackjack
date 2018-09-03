@@ -79,11 +79,16 @@ div.header-text {
 	color: red;
 	z-index: 99;
 	text-align: right;
-	margin-right: 55px;
+	margin-left: 350px;
 }
 
+
+div.header-text .logo-div{
+	width: 100px;
+	height: 100px;
+}
 div.header-text img{
-	width: 20%;
+	width: 100%;
 	transform: rotate(30deg);
 }
 
